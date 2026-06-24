@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Assignment</title>
+  <meta name="description" content="Frontend assignment featuring a card privileges slider, YouTube video carousel with chapters, and a lead form overlay triggered after 6 seconds of video playback.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Mulish:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>Frontend Assignment</h1>
+
+  <!-- ✅ TASK 1: PRIVILEGES SLIDER -->
+  <section class="privileges-section">
+    <h2>Exclusive Privileges</h2>
+
+    <div class="slider">
+      <button class="arrow left" id="leftArrow">&#8249;</button>
+
+      <div class="cards">
+        <div class="card">
+          <p class="title">ENJOY BENEFITS</p>
+          <p>with 10% off on your orders</p>
+        </div>
+
+        <div class="card highlight">
+          <p class="title">APPLE OFFER</p>
+          <p>Avail ₹7,000 off</p>
+        </div>
+
+        <div class="card">
+          <p class="title">AMAZON VOUCHER</p>
+          <p>Get ₹500 voucher</p>
+        </div>
+      </div>
+
+      <button class="arrow right" id="rightArrow">&#8250;</button>
+    </div>
+  </section>
+
+  <!-- ✅ TASK 2: VIDEO CAROUSEL + CHAPTERS -->
+  <section class="task-section" id="task2">
+    <h2>Task 2: Video Chapters for a YouTube Video</h2>
+
+    <div class="carousel-container">
+      <!-- Video Player -->
+      <div class="video-wrapper">
+        <iframe
+          id="videoPlayer"
+          width="640"
+          height="360"
+          src="https://www.youtube.com/embed/RJTCAL1DRro?enablejsapi=1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- Carousel Controls -->
+      <div class="carousel-controls">
+        <button id="prevBtn" onclick="prevVideo()">⬅ Prev</button>
+        <div class="dots">
+          <span class="dot active" onclick="goToVideo(0)"></span>
+          <span class="dot" onclick="goToVideo(1)"></span>
+          <span class="dot" onclick="goToVideo(2)"></span>
+        </div>
+        <button id="nextBtn" onclick="nextVideo()">Next ➡</button>
+      </div>
+
+      <!-- Chapter List -->
+      <div class="chapter-section">
+        <h4>📖 Chapters for this video:</h4>
+        <ul id="chapters" class="chapter-list"></ul>
+      </div>
+    </div>
+
+    <!-- Automated Chapter Generator -->
+    <div class="chapter-generator">
+      <h3>⚙️ Automated Chapter Generator</h3>
+      <p>Enter a YouTube URL to automatically detect and generate chapters.</p>
+
+      <div class="input-group">
+        <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=rfxn7AHFqlY">
+        <button onclick="generateAutomatedChapters()">Generate Chapters</button>
+      </div>
+
+      <!-- Preview iframe for auto-generated chapters -->
+      <iframe id="autoPreview" width="640" height="360" style="display:none; margin-top:20px; border-radius:12px; border:none;" allowfullscreen></iframe>
+
+      <ul id="autoChapters" class="chapter-list" style="margin-top: 15px;"></ul>
+    </div>
+  </section>
+
+  <!-- ✅ TASK 3: VIDEO + LEAD FORM (6 SEC DELAY) -->
+  <section class="task-section video-section" id="task3">
+    <h2>Task 3: Watch &amp; Fill Form (6 Seconds Delay)</h2>
+
+    <div class="video-container">
+      <!-- YouTube Player (Task 3) -->
+      <div id="ytPlayer"></div>
+
+      <!-- Form Overlay -->
+      <div id="formBox">
+        <button class="close-btn" onclick="closeForm()" title="Close">✕</button>
+        <div class="form-header">
+          <h3>🎉 Exclusive Offer!</h3>
+          <p>You've been watching — claim your special deal now!</p>
+        </div>
+        <input type="text" id="formName" placeholder="Full Name" required>
+        <input type="email" id="formEmail" placeholder="Email Address" required>
+        <button class="submit-btn" onclick="alert('Thank you! We\'ll be in touch.')">Submit →</button>
+        <p class="close-form" onclick="closeForm()">No thanks, continue watching</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
